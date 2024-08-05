@@ -13,7 +13,7 @@ public class Configuration {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3001", "https://your-vercel-app.vercel.app")
+                        .allowedOrigins("http://localhost:3001", "https://form-submission-fe.vercel.app/")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*");
             }
