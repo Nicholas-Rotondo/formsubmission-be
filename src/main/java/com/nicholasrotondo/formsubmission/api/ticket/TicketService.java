@@ -15,6 +15,9 @@ public class TicketService {
 
     @Autowired
     private TicketWriteRepository ticketWriteRepository;
+
+    @Autowired
+    private TicketReadRepository ticketReadRepository;
     public List<Ticket> fetchTicket() {
         List<Ticket> tickets = new ArrayList<>();
         tickets.addAll(ticketWriteRepository.findAll());
@@ -39,6 +42,21 @@ public class TicketService {
         } catch (Exception e) {
             logger.error("Error while saving ticket: ", e);
             throw new RuntimeException("Failed to save ticket: " + e.getMessage(), e);
+        }
+    }
+
+    public Ticket updateTicket(Ticket incomingTicket) {
+        Logger logger = LoggerFactory.getLogger(TicketService.class);
+        logger.info("Processing incoming ticket: {}", incomingTicket);
+        try {
+            Ticket ticket = ticketReadRepository.findById(incomingTicket.getId()).orElseThrow(() -> new RuntimeException("Ticket not found"));
+            ticket.setStatus(incomingTicket.getStatus());
+            Ticket savedTicket = ticketWriteRepository.save(ticket);
+            logger.info("Successfully updated ticket: {}", savedTicket);
+            return savedTicket;
+        } catch (Exception e) {
+            logger.error("Error while updating ticket: ", e);
+            throw new RuntimeException("Failed to update ticket: " + e.getMessage(), e);
         }
     }
 }

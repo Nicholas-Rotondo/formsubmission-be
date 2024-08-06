@@ -24,5 +24,11 @@ public class TicketController {
         return ticketService.postTicket(incomingTicket);
     }
 
+    @RequestMapping(value="/api/ticket/updateTicket", method = RequestMethod.POST)
+    @ResponseBody
+    public Ticket updateTicket(@RequestBody Ticket incomingTicket) {
+        return ticketService.updateTicket(incomingTicket);
+    }
+
 
 }
