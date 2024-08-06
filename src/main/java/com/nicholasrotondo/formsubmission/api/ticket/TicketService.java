@@ -30,8 +30,6 @@ public class TicketService {
             Ticket ticket = new Ticket();
             ticket.setEmail(incomingTicket.getEmail());
             ticket.setDescription(incomingTicket.getDescription());
-            ticket.setStatus(incomingTicket.getStatus());
-            ticket.setTitle(incomingTicket.getTitle());
             ticket.setName(incomingTicket.getName());
             ticket.setCreatedAt(now);
 

@@ -16,10 +16,7 @@ public class Ticket {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "title", nullable = false)
-    private String title;
-
-    @Column(name="status", nullable = false)
+    @Column(name="status")
     private String status;
 
     @Column(name = "name", nullable = false)
@@ -35,14 +32,6 @@ public class Ticket {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getDescription() {
