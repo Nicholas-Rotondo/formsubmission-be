@@ -12,10 +12,10 @@ public class Configuration {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**")  // This applies CORS to all /api/ endpoints
+                registry.addMapping("/api/**")
                         .allowedOrigins(
-                                "http://localhost:3000",  // Your local React app
-                                "https://your-frontend-domain.com"  // Your production frontend (if different)
+                                "http://localhost:3000",
+                                "https://form-submission-fe.vercel.app/"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
