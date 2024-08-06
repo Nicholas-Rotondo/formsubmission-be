@@ -12,10 +12,14 @@ public class Configuration {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("*")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
-                        .allowedHeaders("*");
+                registry.addMapping("/api/**")  // This applies CORS to all /api/ endpoints
+                        .allowedOrigins(
+                                "http://localhost:3000",  // Your local React app
+                                "https://your-frontend-domain.com"  // Your production frontend (if different)
+                        )
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
             }
         };
     }
